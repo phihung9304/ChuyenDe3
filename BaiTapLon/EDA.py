@@ -7,14 +7,22 @@ df = pd.read_csv("shopping_cleaned.csv")
 # ======================
 print("=== PHÂN TÍCH CHI TIÊU ===")
 # Số tiền khách hàng chi cho mỗi đơn hàng
-print(df['purchase_amount_(usd)'].describe())
+print(df['purchase_amount_usd'].describe())
 
 print("\nChi tiêu trung bình theo giảm giá:")
-print(df.groupby('discount_applied')['purchase_amount_(usd)'].mean())
+print(df.groupby('discount_applied')['purchase_amount_usd'].mean())
 
 print("\nChi tiêu trung bình theo mã khuyến mãi:")
-print(df.groupby('promo_code_used')['purchase_amount_(usd)'].mean())
+print(df.groupby('promo_code_used')['purchase_amount_usd'].mean())
 
+result = {
+    "Thống kê mô tả": df['purchase_amount_usd'].describe(),
+    "TB theo giảm giá": df.groupby('discount_applied')['purchase_amount_usd'].mean(),
+    "TB theo mã KM": df.groupby('promo_code_used')['purchase_amount_usd'].mean()
+}
+
+combined = pd.concat(result, axis=1)
+combined.to_csv("analysis_output.csv", encoding="utf-8-sig")
 
 # =========================
 # 3.EDA 2: PHÂN TÍCH KHÁCH HÀNG
@@ -29,6 +37,29 @@ print("\nTop 10 địa điểm mua hàng:")
 print(df['location'].value_counts().head(10))
 
 
+import pandas as pd
+
+# Giá trị
+age = round(df['age'].mean(), 2)
+
+gender_values = [f"{k}: {v}" for k, v in df['gender'].value_counts().items()]
+location_values = [f"{k}: {v}" for k, v in df['location'].value_counts().head(10).items()]
+
+# Header (cột)
+columns = (
+    ["Tuổi trung bình"] +
+    ["Giới tính"] * len(gender_values) +
+    ["Top địa điểm"] * len(location_values)
+)
+
+# Data (1 dòng)
+data = [age] + gender_values + location_values
+
+# Tạo DataFrame
+final = pd.DataFrame([data], columns=columns)
+
+# Xuất CSV
+final.to_csv("phan_tich_1dong.csv", index=False, encoding="utf-8-sig")
 # =========================
 # 3.EDA 3: PHÂN TÍCH SẢN PHẨM
 # =========================
