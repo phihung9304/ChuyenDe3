@@ -22,7 +22,7 @@ result = {
 }
 
 combined = pd.concat(result, axis=1)
-combined.to_csv("analysis_output.csv", encoding="utf-8-sig")
+combined.to_csv("phan_tich_chi_tieu.csv", encoding="utf-8-sig")
 
 # =========================
 # 3.EDA 2: PHÂN TÍCH KHÁCH HÀNG
@@ -36,30 +36,17 @@ print(df['gender'].value_counts())
 print("\nTop 10 địa điểm mua hàng:")
 print(df['location'].value_counts().head(10))
 
+result = {
+    "Tuổi trung bình": pd.Series({"Giá trị": df['age'].mean()}),
 
-import pandas as pd
+    "Số lượng theo giới tính": df.groupby('gender')['age'].count(),
 
-# Giá trị
-age = round(df['age'].mean(), 2)
+    "Top 10 địa điểm": df.groupby('location')['age'].count().sort_values(ascending=False).head(10)
+}
 
-gender_values = [f"{k}: {v}" for k, v in df['gender'].value_counts().items()]
-location_values = [f"{k}: {v}" for k, v in df['location'].value_counts().head(10).items()]
+combined = pd.concat(result, axis=1)
+combined.to_csv("phan_tich_khach_hang.csv", encoding="utf-8-sig")
 
-# Header (cột)
-columns = (
-    ["Tuổi trung bình"] +
-    ["Giới tính"] * len(gender_values) +
-    ["Top địa điểm"] * len(location_values)
-)
-
-# Data (1 dòng)
-data = [age] + gender_values + location_values
-
-# Tạo DataFrame
-final = pd.DataFrame([data], columns=columns)
-
-# Xuất CSV
-final.to_csv("phan_tich_1dong.csv", index=False, encoding="utf-8-sig")
 # =========================
 # 3.EDA 3: PHÂN TÍCH SẢN PHẨM
 # =========================
@@ -73,7 +60,16 @@ print(df['item_purchased'].value_counts().head(10))
 print("\nMùa mua hàng:")
 print(df['season'].value_counts())
 
+result = {
+    "Danh mục phổ biến": df['category'].value_counts(),
 
+    "Top 10 sản phẩm": df['item_purchased'].value_counts().head(10),
+
+    "Mùa mua hàng": df['season'].value_counts()
+}
+
+combined = pd.concat(result, axis=1)
+combined.to_csv("phan_tich_san_pham.csv", encoding="utf-8-sig")
 # =========================
 # 3.EDA 4: PHÂN TÍCH HÀNH VI
 # =========================
@@ -91,4 +87,19 @@ print("\nSố lượng theo từng danh mục sản phẩm:")
 print(df['category'].value_counts())
 
 print("\nChi tiêu trung bình theo giới tính:")
-print(df.groupby('gender')['purchase_amount_(usd)'].mean())
+print(df.groupby('gender')['purchase_amount_usd'].mean())
+
+result = {
+    "Phương thức thanh toán": df['payment_method'].value_counts(),
+
+    "Tần suất mua hàng": df['frequency_of_purchases'].value_counts(),
+
+    "Đăng ký thành viên": df['subscription_status'].value_counts(),
+
+    "Danh mục sản phẩm": df['category'].value_counts(),
+
+    "Chi tiêu TB theo giới tính": df.groupby('gender')['purchase_amount_usd'].mean()
+}
+
+combined = pd.concat(result, axis=1)
+combined.to_csv("phan_tich_hanh_vi.csv", encoding="utf-8-sig")
