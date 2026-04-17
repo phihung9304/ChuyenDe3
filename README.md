@@ -1,47 +1,36 @@
-# 📊 Customer Sales Analysis & Forecasting
+# 🛒 Customer Shopping Data Analysis
 
 ## 📌 1. Giới thiệu
 
-Dự án tập trung vào việc phân tích dữ liệu khách hàng và dự báo doanh thu theo tháng cho một cửa hàng bán lẻ.
-Bài toán thuộc lĩnh vực **Time Series Analysis**, với dữ liệu được thu thập theo từng tháng trong vòng 3 năm.
+Dự án tập trung vào việc **làm sạch và xử lý dữ liệu khách hàng mua sắm** từ file `shopping_trends.csv`.
 
-Mục tiêu là:
+Mục tiêu chính là:
 
-* Khai thác insight từ dữ liệu lịch sử
-* Xác định xu hướng và mùa vụ
-* Xây dựng mô hình dự báo doanh thu 12 tháng tiếp theo
-* Hỗ trợ ra quyết định kinh doanh
+* Làm sạch dữ liệu (data cleaning)
+* Chuẩn hóa dữ liệu để phục vụ phân tích (EDA)
+* Loại bỏ dữ liệu sai lệch và ngoại lai
+* Tạo dataset sạch cho các bước phân tích tiếp theo
 
 ---
 
 ## 🎯 2. Mục tiêu bài toán
 
-* Làm sạch và chuẩn hóa dữ liệu (missing, duplicate)
-* Phân tích xu hướng doanh thu theo thời gian
-* Đánh giá mối quan hệ:
-
-  * Doanh thu và ngân sách marketing
-  * Doanh thu và số lượng khách hàng
-* Trực quan hóa dữ liệu
-* Xây dựng mô hình dự báo
-* Đánh giá mô hình bằng:
-
-```
-MAE
-RMSE
-MAPE
-```
-
-* Dự báo doanh thu 12 tháng tiếp theo
-* Đưa ra insight & đề xuất kinh doanh
+* Xóa dữ liệu trùng lặp
+* Chuẩn hóa tên cột
+* Chuyển đổi kiểu dữ liệu
+* Làm sạch dữ liệu text
+* Xử lý giá trị thiếu (missing values)
+* Lọc dữ liệu hợp lệ
+* Loại bỏ outlier
+* Xuất dữ liệu sạch
 
 ---
 
 ## 📂 3. Dataset sử dụng
 
-Dataset gồm các cột:
+Dataset: `shopping_trends.csv`
 
-## 👤 Thông tin khách hàng (Customer Information)
+### 👤 Thông tin khách hàng
 
 | Cột         | Ý nghĩa       |
 | ----------- | ------------- |
@@ -49,65 +38,55 @@ Dataset gồm các cột:
 | Age         | Tuổi          |
 | Gender      | Giới tính     |
 | Location    | Khu vực       |
-## 🛍 Thông tin mua hàng (Purchase Information)
 
-| Cột                   | Ý nghĩa                |
-| --------------------- | ---------------------- |
-| Item Purchased        | Sản phẩm đã mua        |
-| Category              | Danh mục sản phẩm      |
-| Purchase Amount (USD) | Số tiền mua hàng (USD) |
-| Size                  | Kích thước sản phẩm    |
-| Color                 | Màu sắc sản phẩm       |
+### 🛍 Thông tin mua hàng
 
----
+| Cột                   | Ý nghĩa           |
+| --------------------- | ----------------- |
+| Item Purchased        | Sản phẩm đã mua   |
+| Category              | Danh mục sản phẩm |
+| Purchase Amount (USD) | Số tiền mua       |
+| Size                  | Kích thước        |
+| Color                 | Màu sắc           |
 
-## 📦 Thông tin giao dịch (Transaction Information)
+### 📦 Thông tin giao dịch
 
-| Cột              | Ý nghĩa                  |
-| ---------------- | ------------------------ |
-| Payment Method   | Phương thức thanh toán   |
-| Shipping Type    | Hình thức vận chuyển     |
-| Discount Applied | Có áp dụng giảm giá      |
-| Promo Code Used  | Có sử dụng mã khuyến mãi |
+| Cột              | Ý nghĩa                |
+| ---------------- | ---------------------- |
+| Payment Method   | Phương thức thanh toán |
+| Shipping Type    | Hình thức vận chuyển   |
+| Discount Applied | Có giảm giá            |
+| Promo Code Used  | Có dùng mã giảm        |
 
----
+### 🔁 Hành vi khách hàng
 
-## 🔁 Hành vi khách hàng (Customer Behavior)
+| Cột                      | Ý nghĩa             |
+| ------------------------ | ------------------- |
+| Previous Purchases       | Số lần mua trước    |
+| Frequency of Purchases   | Tần suất mua        |
+| Subscription Status      | Trạng thái đăng ký  |
+| Preferred Payment Method | Thanh toán ưa thích |
 
-| Cột                      | Ý nghĩa                         |
-| ------------------------ | ------------------------------- |
-| Previous Purchases       | Số lần mua trước đó             |
-| Frequency of Purchases   | Tần suất mua hàng               |
-| Subscription Status      | Trạng thái đăng ký              |
-| Preferred Payment Method | Phương thức thanh toán ưa thích |
+### ⭐ Đánh giá
 
----
-
-## ⭐ Đánh giá & mùa vụ (Rating & Seasonality)
-
-| Cột           | Ý nghĩa           |
-| ------------- | ----------------- |
-| Review Rating | Đánh giá sản phẩm |
-| Season        | Mùa mua hàng      |
-
+| Cột           | Ý nghĩa  |
+| ------------- | -------- |
+| Review Rating | Đánh giá |
+| Season        | Mùa      |
 
 ---
 
-## 🧹 4. Tiền xử lý dữ liệu
+## 🧹 4. Quy trình xử lý dữ liệu
 
-### 🔍 Kiểm tra dữ liệu thiếu
+### 📥 1. Load dữ liệu
 
 ```python
-df.isnull().sum()
+df = pd.read_csv("shopping_trends.csv")
 ```
 
-### 🛠 Xử lý
+---
 
-* `sales` → điền bằng **mean**
-* `promotion_budget` → **forward fill**
-* `num_customers` → **forward fill**
-
-### 🧾 Xóa dữ liệu trùng
+### 🧾 2. Xóa dữ liệu trùng
 
 ```python
 df.drop_duplicates()
@@ -115,68 +94,73 @@ df.drop_duplicates()
 
 ---
 
-## 📊 5. Phân tích dữ liệu
+### 🔤 3. Chuẩn hóa tên cột
 
-### 📌 Tương quan
+* Xóa khoảng trắng
+* Chuyển chữ thường
+* Thay space → `_`
+* Xóa ký tự đặc biệt
+
+---
+
+### 🔢 4. Chuẩn hóa kiểu dữ liệu
 
 ```python
-df[['sales','promotion_budget','num_customers']].corr()
+df["age"] = pd.to_numeric(df["age"], errors="coerce")
+df["purchase_amount_usd"] = pd.to_numeric(df["purchase_amount_usd"], errors="coerce")
 ```
 
-### 💡 Insight
+---
 
-* Marketing ↑ → Sales ↑ (tương quan dương)
-* Customers ↑ → Sales ↑ mạnh hơn
+### 🧽 5. Làm sạch dữ liệu text
+
+* Gender → chuẩn hóa chữ cái
+* Item Purchased → xóa khoảng trắng
+* Category → viết hoa chữ cái đầu
 
 ---
 
-## 📈 6. Trực quan hóa
+### ❌ 6. Xử lý dữ liệu thiếu
 
-Các biểu đồ sử dụng:
-
-* 📉 Line chart: Doanh thu theo thời gian
-* 📊 Rolling mean: Xu hướng mượt
-* 📊 Bar chart: Mùa vụ theo tháng
-* 🔵 Scatter plot:
-
-  * Promotion vs Sales
-  * Customers vs Sales
-
----
-
-## 🤖 7. Xây dựng mô hình
-
-### 🔧 Các mô hình sử dụng
-
-* Linear Regression
-* Random Forest
-* Naive Forecast
-* Moving Average
-* Exponential Smoothing
-
-### 📌 Feature sử dụng
-
-* `month`, `quarter`
-* `lag_1`, `lag_3`
-* `rolling_mean_3`
-
----
-
-## 📏 8. Đánh giá mô hình
-
-Các chỉ số:
-
-```
-MAE
-RMSE
-MAPE
+```python
+df.isnull().sum()
+df.dropna()
 ```
 
-👉 Chọn mô hình tốt nhất dựa trên **RMSE thấp nhất**
+---
+
+### 🎯 7. Lọc dữ liệu hợp lệ
+
+* Age: 18 → 100
+* Purchase > 0
 
 ---
 
-## 📁 9. Cấu trúc project
+### 📉 8. Xử lý Outlier (IQR)
+
+* Tính Q1, Q3
+* Tính IQR
+* Loại bỏ giá trị ngoài khoảng
+
+---
+
+### 🔄 9. Reset index
+
+```python
+df.reset_index(drop=True)
+```
+
+---
+
+### 💾 10. Lưu dữ liệu
+
+```python
+df.to_csv("shopping_cleaned.csv", index=False)
+```
+
+---
+
+## 📁 5. Cấu trúc project
 
 ```
 BAITAPLON/
@@ -217,49 +201,49 @@ BAITAPLON/
 
 ---
 
-## ⚙️ 10. Cách chạy chương trình
+## ⚙️ 6. Cách chạy chương trình
 
-### 📦 Cài đặt thư viện
+### 📦 Cài thư viện
 
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn
+pip install pandas
 ```
 
 ### ▶️ Chạy chương trình
 
 ```bash
-python sales_analysis.py
-```
-
-### 🔄 Chạy riêng bước làm sạch
-
-```python
-df.isnull().sum()
-df.drop_duplicates()
+python DATACLEANING.py
 ```
 
 ---
 
-## 📌 11. Kết luận
+## 📊 7. Kết quả
 
-* Doanh thu có xu hướng tăng theo thời gian
-* Có yếu tố mùa vụ (cuối năm cao)
-* Marketing ảnh hưởng tích cực đến doanh thu
-* Số lượng khách hàng là yếu tố quan trọng nhất
-* Random Forest cho kết quả tốt nhất
+* Dataset sạch: `shopping_cleaned.csv`
+* Dữ liệu đã:
 
-### 💡 Đề xuất
-
-* Tăng marketing vào mùa thấp điểm
-* Tập trung phát triển khách hàng
-* Áp dụng mô hình dự báo để lập kế hoạch
+  * Không còn trùng lặp
+  * Không có missing
+  * Không có outlier lớn
+  * Chuẩn hóa format
 
 ---
 
-## 👥 12. Thành viên nhóm
+## 📌 8. Kết luận
+
+* Dữ liệu ban đầu chứa nhiều lỗi (missing, sai định dạng)
+* Sau khi xử lý, dữ liệu đã sẵn sàng cho:
+
+  * Phân tích dữ liệu (EDA)
+  * Trực quan hóa
+  * Machine Learning
+
+---
+
+## 👥 9. Thành viên nhóm
 
 * Nguyễn Sỹ Quang - 20220744
 * Lê Phi Hùng - 20220838
-* Hoàng Minh Duy
+* Hoàng Minh Duy - 20220744
 
 ---
