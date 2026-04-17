@@ -1,156 +1,139 @@
+# 📊 Customer Sales Analysis & Forecasting
 
-📊 Customer Sales Analysis & Forecasting  
+## 📌 1. Giới thiệu
 
-1. Giới thiệu
+Dự án tập trung vào việc phân tích dữ liệu khách hàng và dự báo doanh thu theo tháng cho một cửa hàng bán lẻ.
+Bài toán thuộc lĩnh vực **Time Series Analysis**, với dữ liệu được thu thập theo từng tháng trong vòng 3 năm.
 
-Dự án này tập trung vào việc phân tích dữ liệu khách hàng và dự báo doanh thu theo tháng cho một cửa hàng bán lẻ. Bài toán thuộc lĩnh vực phân tích dữ liệu chuỗi thời gian (time series analysis), trong đó dữ liệu được thu thập theo từng tháng trong vòng 3 năm.
+Mục tiêu là:
 
-Mục tiêu chính là khai thác insight từ dữ liệu lịch sử, xác định xu hướng, mùa vụ và các yếu tố ảnh hưởng đến doanh thu, từ đó xây dựng mô hình dự báo doanh thu cho 12 tháng tiếp theo nhằm hỗ trợ ra quyết định kinh doanh.
+* Khai thác insight từ dữ liệu lịch sử
+* Xác định xu hướng và mùa vụ
+* Xây dựng mô hình dự báo doanh thu 12 tháng tiếp theo
+* Hỗ trợ ra quyết định kinh doanh
 
-2. Mục tiêu bài toán
-3. 
-Làm sạch và chuẩn hóa dữ liệu (xử lý missing, duplicate)
+---
 
-Phân tích xu hướng doanh thu theo thời gian
+## 🎯 2. Mục tiêu bài toán
 
-Đánh giá mối quan hệ giữa:
+* Làm sạch và chuẩn hóa dữ liệu (missing, duplicate)
+* Phân tích xu hướng doanh thu theo thời gian
+* Đánh giá mối quan hệ:
 
-doanh thu và ngân sách marketing
+  * Doanh thu và ngân sách marketing
+  * Doanh thu và số lượng khách hàng
+* Trực quan hóa dữ liệu
+* Xây dựng mô hình dự báo
+* Đánh giá mô hình bằng:
 
-doanh thu và số lượng  khách hàng
-
-Trực quan hóa dữ liệu bằng  biểu  đồ
-
-Xây dựng mô hình dự báo doanh  thu
-
-Đánh giá mô hình bằng:
-
+```
 MAE
-
 RMSE
-
 MAPE
+```
 
-Dự báo doanh thu 12 tháng tiếp theo
+* Dự báo doanh thu 12 tháng tiếp theo
+* Đưa ra insight & đề xuất kinh doanh
 
-Đưa ra insight và đề xuất kinh doanh
+---
 
-4. Dataset sử dụng
+## 📂 3. Dataset sử dụng
 
 Dataset gồm các cột:
 
-Cột	Ý nghĩa
+| Cột              | Ý nghĩa                    |
+| ---------------- | -------------------------- |
+| date             | Thời gian (cuối mỗi tháng) |
+| sales            | Doanh thu                  |
+| promotion_budget | Ngân sách marketing        |
+| num_customers    | Số lượng khách hàng        |
 
-date	thời gian (cuối mỗi tháng)
+---
 
-sales	doanh thu
+## 🧹 4. Tiền xử lý dữ liệu
 
-promotion_budget	ngân sách marketing
+### 🔍 Kiểm tra dữ liệu thiếu
 
-num_customers	số lượng khách hàng
-
-Bước 2. Xử lý dữ liệu thiếu
-
-Kiểm tra dữ liệu thiếu:
-
+```python
 df.isnull().sum()
+```
 
-Xử lý:
+### 🛠 Xử lý
 
-sales → điền bằng mean
+* `sales` → điền bằng **mean**
+* `promotion_budget` → **forward fill**
+* `num_customers` → **forward fill**
 
-promotion_budget → forward fill
+### 🧾 Xóa dữ liệu trùng
 
-num_customers → forward fill
-
-Xóa dữ liệu trùng:
-
+```python
 df.drop_duplicates()
+```
 
+---
 
-Bước 3. Phân tích mối quan hệ giữa dữ liệu
+## 📊 5. Phân tích dữ liệu
 
-Phân tích tương quan:
+### 📌 Tương quan
 
+```python
 df[['sales','promotion_budget','num_customers']].corr()
+```
 
-Insight:
+### 💡 Insight
 
-promotion ↑ → sales ↑ (tương quan dương)
+* Marketing ↑ → Sales ↑ (tương quan dương)
+* Customers ↑ → Sales ↑ mạnh hơn
 
-customers ↑ → sales ↑ mạnh hơn
+---
 
-Bước 4. Trực quan hóa
+## 📈 6. Trực quan hóa
 
 Các biểu đồ sử dụng:
 
-Line chart: doanh thu theo thời gian
+* 📉 Line chart: Doanh thu theo thời gian
+* 📊 Rolling mean: Xu hướng mượt
+* 📊 Bar chart: Mùa vụ theo tháng
+* 🔵 Scatter plot:
 
-Rolling mean: xu hướng mượt
+  * Promotion vs Sales
+  * Customers vs Sales
 
-Bar chart: mùa vụ theo tháng
+---
 
-Scatter plot:
+## 🤖 7. Xây dựng mô hình
 
-promotion vs sales
+### 🔧 Các mô hình sử dụng
 
-customers vs sales
+* Linear Regression
+* Random Forest
+* Naive Forecast
+* Moving Average
+* Exponential Smoothing
 
-Bước 5. Xây dựng mô hình
+### 📌 Feature sử dụng
 
-Sử dụng các mô hình:
+* `month`, `quarter`
+* `lag_1`, `lag_3`
+* `rolling_mean_3`
 
-Linear Regression
+---
 
-Random Forest
-
-Naive Forecast
-
-Moving Average
-
-Exponential Smoothing
-
-Feature sử dụng:
-
-month, quarter
-
-lag_1, lag_3
-
-rolling_mean_3
-
-Bước 6. Đánh giá mô hình
+## 📏 8. Đánh giá mô hình
 
 Các chỉ số:
 
+```
 MAE
-
 RMSE
-
 MAPE
+```
 
-Chọn model tốt nhất dựa trên RMSE thấp nhất.
+👉 Chọn mô hình tốt nhất dựa trên **RMSE thấp nhất**
 
-5. Giải thích chi tiết các file trong project
-   
-File dữ liệu
+---
 
-sales_data.csv: dữ liệu đầu vào
-
-File code
-
-sales_analysis.py: file chính chạy toàn bộ pipeline
-
-File kết quả trong thư mục outputs/
-
-biểu đồ
-
-file dự báo
-
-File tài liệu
-
-report.pdf: báo cáo đồ án
-
-7. Cấu trúc thư mục thực tế
+## 📁 9. Cấu trúc project
 
 ```
 BAITAPLON/
@@ -164,6 +147,7 @@ BAITAPLON/
 │   ├── phan_tich_khach_hang.csv
 │   ├── phan_tich_san_pham.csv
 │   └── top_khach_hang.csv   
+│
 ├── outputpng/
 │   ├── boxplot_chi_tieu_gioi_tinh.png
 │   ├── chi_tieu_subscription.png
@@ -175,60 +159,64 @@ BAITAPLON/
 │   ├── doanh_thu_theo_danh_muc.png
 │   ├── phuong_thuc_thanh_toan.png
 │   └── so_tien_mua_hang.png  
-├── DATACLEANING.py/
-│  
-├── EDA.py/
-│   
-├── README.md
 │
-├──shopping_cleaned.csv
+├── DATACLEANING.py
+├── EDA.py
+├── VISUALIZATION.py
 │
-├──shopping_trends.csv
+├── sales_analysis.py
 │
-└──VISUALIZATION.py/
+├── shopping_cleaned.csv
+├── shopping_trends.csv
+│
+└── README.md
 ```
-7. Cách chạy chương trình
 
-Cài đặt thư viện
+---
 
+## ⚙️ 10. Cách chạy chương trình
+
+### 📦 Cài đặt thư viện
+
+```bash
 pip install pandas numpy matplotlib seaborn scikit-learn
+```
 
-Chạy phân tích và huấn luyện mô hình
+### ▶️ Chạy chương trình
 
+```bash
 python sales_analysis.py
+```
 
-Nếu muốn chạy bước làm sạch riêng
+### 🔄 Chạy riêng bước làm sạch
 
-Comment các phần code khác và chỉ chạy:
-
+```python
 df.isnull().sum()
-
 df.drop_duplicates()
+```
 
-8. Kết luận
+---
 
-Doanh thu có xu hướng tăng theo thời gian
+## 📌 11. Kết luận
 
-Có yếu tố mùa vụ (cuối năm cao)
+* Doanh thu có xu hướng tăng theo thời gian
+* Có yếu tố mùa vụ (cuối năm cao)
+* Marketing ảnh hưởng tích cực đến doanh thu
+* Số lượng khách hàng là yếu tố quan trọng nhất
+* Random Forest cho kết quả tốt nhất
 
-Marketing có ảnh hưởng tích cực đến doanh thu
+### 💡 Đề xuất
 
-Số lượng khách hàng là yếu tố quan trọng nhất
+* Tăng marketing vào mùa thấp điểm
+* Tập trung phát triển khách hàng
+* Áp dụng mô hình dự báo để lập kế hoạch
 
-Random Forest thường cho kết quả tốt nhất
+---
 
-Đề xuất:
+## 👥 12. Thành viên nhóm
 
-Tăng marketing vào mùa thấp điểm
+* Nguyễn Sỹ Quang - 20220744
+* Lê Phi Hùng - 20220838
+* Hoàng Minh Duy - 20220794
 
-Tập trung tăng khách hàng
-
-Áp dụng dự báo để lập kế hoạch kinh doanh
-
-9. Thành viên nhóm
-
-Nguyễn Sỹ Quang - 20220744
-
-Lê Phi Hùng - 20220838
-
-Hoàng Minh Duy 
+---
