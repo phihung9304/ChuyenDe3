@@ -8,7 +8,7 @@ Dự án này tập trung vào việc phân tích dữ liệu khách hàng và d
 Mục tiêu chính là khai thác insight từ dữ liệu lịch sử, xác định xu hướng, mùa vụ và các yếu tố ảnh hưởng đến doanh thu, từ đó xây dựng mô hình dự báo doanh thu cho 12 tháng tiếp theo nhằm hỗ trợ ra quyết định kinh doanh.
 
 2. Mục tiêu bài toán
-3. 
+    
 Làm sạch và chuẩn hóa dữ liệu (xử lý missing, duplicate)
 
 Phân tích xu hướng doanh thu theo thời gian
