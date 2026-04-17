@@ -41,12 +41,13 @@ MAPE
 
 Dataset gồm các cột:
 
-| Cột              | Ý nghĩa                    |
-| ---------------- | -------------------------- |
-| date             | Thời gian (cuối mỗi tháng) |
-| sales            | Doanh thu                  |
-| promotion_budget | Ngân sách marketing        |
-| num_customers    | Số lượng khách hàng        |
+| Cột                      | Ý nghĩa           |
+| ------------------------ | ----------------- |
+| `age`                    | Tuổi khách hàng   |
+| `purchase_amount_usd`    | Số tiền mua hàng  |
+| `gender`                 | Giới tính         |
+| `item_purchased`         | Sản phẩm đã mua   |
+| `category` *(có thể có)* | Danh mục sản phẩm |
 
 ---
 
