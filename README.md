@@ -41,13 +41,55 @@ MAPE
 
 Dataset gồm các cột:
 
-| Cột                      | Ý nghĩa           |
-| ------------------------ | ----------------- |
-| `age`                    | Tuổi khách hàng   |
-| `purchase_amount_usd`    | Số tiền mua hàng  |
-| `gender`                 | Giới tính         |
-| `item_purchased`         | Sản phẩm đã mua   |
-| `category` *(có thể có)* | Danh mục sản phẩm |
+## 👤 Thông tin khách hàng (Customer Information)
+
+| Cột         | Ý nghĩa       |
+| ----------- | ------------- |
+| Customer ID | ID khách hàng |
+| Age         | Tuổi          |
+| Gender      | Giới tính     |
+| Location    | Khu vực       |
+## 🛍 Thông tin mua hàng (Purchase Information)
+
+| Cột                   | Ý nghĩa                |
+| --------------------- | ---------------------- |
+| Item Purchased        | Sản phẩm đã mua        |
+| Category              | Danh mục sản phẩm      |
+| Purchase Amount (USD) | Số tiền mua hàng (USD) |
+| Size                  | Kích thước sản phẩm    |
+| Color                 | Màu sắc sản phẩm       |
+
+---
+
+## 📦 Thông tin giao dịch (Transaction Information)
+
+| Cột              | Ý nghĩa                  |
+| ---------------- | ------------------------ |
+| Payment Method   | Phương thức thanh toán   |
+| Shipping Type    | Hình thức vận chuyển     |
+| Discount Applied | Có áp dụng giảm giá      |
+| Promo Code Used  | Có sử dụng mã khuyến mãi |
+
+---
+
+## 🔁 Hành vi khách hàng (Customer Behavior)
+
+| Cột                      | Ý nghĩa                         |
+| ------------------------ | ------------------------------- |
+| Previous Purchases       | Số lần mua trước đó             |
+| Frequency of Purchases   | Tần suất mua hàng               |
+| Subscription Status      | Trạng thái đăng ký              |
+| Preferred Payment Method | Phương thức thanh toán ưa thích |
+
+---
+
+## ⭐ Đánh giá & mùa vụ (Rating & Seasonality)
+
+| Cột           | Ý nghĩa           |
+| ------------- | ----------------- |
+| Review Rating | Đánh giá sản phẩm |
+| Season        | Mùa mua hàng      |
+
 
 ---
 
