@@ -190,8 +190,8 @@ BAITAPLON/
 ├── DATACLEANING.py
 ├── EDA.py
 ├── VISUALIZATION.py
-│
-├── sales_analysis.py
+├── modeling.py
+├── Insight.py
 │
 ├── shopping_cleaned.csv
 ├── shopping_trends.csv
