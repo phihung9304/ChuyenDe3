@@ -259,6 +259,6 @@ df.drop_duplicates()
 
 * Nguyễn Sỹ Quang - 20220744
 * Lê Phi Hùng - 20220838
-* Hoàng Minh Duy
+* Hoàng Minh Duy - 20220794
 
 ---
