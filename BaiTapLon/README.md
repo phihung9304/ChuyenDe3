@@ -30,9 +30,9 @@ Data Cleaning → EDA → Visualization → Modeling → Insight
  * Doanh thu và ngân sách marketing
  * Doanh thu và số lượng khách hàng
 
-*Modeling:
- *Xây dựng mô hình dự báo doanh thu
-*Đánh giá mô hình bằng các chỉ số:
+* Modeling:
+ * Xây dựng mô hình dự báo doanh thu
+* Đánh giá mô hình bằng các chỉ số:
 ```
 MAE
 RMSE
