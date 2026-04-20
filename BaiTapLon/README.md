@@ -20,7 +20,7 @@ Bài toán được triển khai theo quy trình:
 Data Cleaning → EDA → Visualization → Modeling → Insight
 
 * Data Cleaning: Làm sạch và chuẩn hóa dữ liệu (xử lý missing values, loại bỏ duplicates)
-*EDA (Exploratory Data Analysis):
+* EDA (Exploratory Data Analysis):
  * Phân tích xu hướng doanh thu theo thời gian
  * Khám phá phân phối dữ liệu và phát hiện bất thường
 
@@ -39,7 +39,7 @@ RMSE
 MAPE
 ```
 
-*Forecasting:
+* Forecasting:
  * Dự báo doanh thu cho 12 tháng tiếp theo
 * Insight & Recommendation:
  * Rút ra insight từ dữ liệu và mô hình
