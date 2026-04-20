@@ -14,7 +14,6 @@ Mục tiêu là:
 
 ---
 
-## 🎯 2. Mục tiêu bài toán
 
 * Làm sạch và chuẩn hóa dữ liệu (missing, duplicate)
 * Phân tích xu hướng doanh thu theo thời gian
@@ -34,6 +33,34 @@ MAPE
 
 * Dự báo doanh thu 12 tháng tiếp theo
 * Đưa ra insight & đề xuất kinh doanh
+## 🎯 2. Mục tiêu bài toán
+Bài toán được triển khai theo quy trình:
+
+Data Cleaning → EDA → Visualization → Modeling → Insight
+
+Data Cleaning: Làm sạch và chuẩn hóa dữ liệu (xử lý missing values, loại bỏ duplicates)
+EDA (Exploratory Data Analysis):
+Phân tích xu hướng doanh thu theo thời gian
+Khám phá phân phối dữ liệu và phát hiện bất thường
+
+Visualization:
+Trực quan hóa xu hướng doanh thu
+Phân tích mối quan hệ:
+Doanh thu và ngân sách marketing
+Doanh thu và số lượng khách hàng
+
+Modeling:
+Xây dựng mô hình dự báo doanh thu
+Đánh giá mô hình bằng các chỉ số:
+MAE
+RMSE
+MAPE
+
+Forecasting:
+Dự báo doanh thu cho 12 tháng tiếp theo
+Insight & Recommendation:
+Rút ra insight từ dữ liệu và mô hình
+Đề xuất chiến lược kinh doanh phù hợp
 
 ---
 
@@ -41,12 +68,27 @@ MAPE
 
 Dataset gồm các cột:
 
-| Cột              | Ý nghĩa                    |
-| ---------------- | -------------------------- |
-| date             | Thời gian (cuối mỗi tháng) |
-| sales            | Doanh thu                  |
-| promotion_budget | Ngân sách marketing        |
-| num_customers    | Số lượng khách hàng        |
+| Cột                       | Ý nghĩa                         |
+| ------------------------- | ------------------------------- |
+| customer_id               | id khách hàng                   |
+| age                       | tuổi                            |
+| gender                    | giới tính                       |
+| item_purchased            | sản phẩm đã mua                 |
+| category                  | danh mục                        |
+| purchase_amout_usd        | số tiền mua ( USD )             |
+| location                  | vị trí                          |
+| size                      | kích thước                      |
+| color                     | màu sắc                         |
+| season                    | mùa                             |
+| review_rating             | đánh giá                        |
+| subscription_status       | trạng thái đăng ký              |
+| payment_method            | phương thức thánh toán          |
+| shipping_type             | loại vận chuyển                 |
+| discount_applied          | áp dụng giảm giá                |
+| promo_code_used           | mã khuyến mãi sử dụng           |
+| previous_purchases        | các đơn mua hàng trước          |
+| preferred_payment_method  | phương thức thanh toán ưa thích |
+| frequency_of_purchases    | tần suất mua hàng               |
 
 ---
 
