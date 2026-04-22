@@ -183,19 +183,64 @@ BAITAPLON/
 
 ## 📁 10. Giải thích chi tiết các file trong project
 
-### 📊 File dữ liệu
-- **shopping_trends.csv**: Bộ dữ liệu gốc ban đầu, chứa thông tin về khách hàng, doanh số và các yếu tố liên quan như khuyến mãi.
-- **shopping_cleaned.csv**: Dữ liệu sau khi đã được làm sạch và tiền xử lý (xử lý missing values, loại bỏ dữ liệu trùng lặp), được sử dụng cho phân tích và xây dựng mô hình.
+### File dữ liệu
+- **shopping_trends.csv**: Bộ dữ liệu gốc ban đầu, chứa thông tin về khách hàng, hành vi mua sắm và doanh thu.
+- **shopping_cleaned.csv**: Dữ liệu sau khi đã được làm sạch và tiền xử lý, sử dụng cho các bước phân tích và mô hình hóa.
 
 ---
 
-### 📓 File phân tích
-- **analysis.ipynb**: Notebook chính thực hiện toàn bộ quy trình phân tích dữ liệu, bao gồm Data Cleaning, EDA, Visualization và Modeling.
+### Thư mục outputcsv/
+Chứa các file kết quả phân tích dạng bảng (CSV):
+
+- **phan_tich_chi_tieu.csv**: Thống kê và phân tích chi tiêu của khách hàng  
+- **phan_tich_doanh_thu.csv**: Phân tích doanh thu theo các yếu tố khác nhau  
+- **phan_tich_khach_hang.csv**: Phân tích đặc điểm và hành vi khách hàng  
+- **phan_tich_san_pham.csv**: Phân tích theo danh mục sản phẩm  
+- **phan_tich_hanh_vi.csv**: Phân tích hành vi mua sắm  
+- **phan_tich_crosstab.csv**: Bảng chéo giữa các biến để tìm mối quan hệ  
+- **phan_tich_ket_hop.csv**: Phân tích kết hợp nhiều yếu tố  
+- **top_khach_hang.csv**: Danh sách khách hàng có giá trị cao nhất  
+- **ket_qua_du_doan_quan_trong.csv**: Kết quả dự đoán từ mô hình  
 
 ---
 
-### 📌 File tài liệu
-- **README.md**: Tài liệu mô tả tổng quan về project, mục tiêu, quy trình thực hiện và cách sử dụng.
+### Thư mục outputpng/
+Chứa các biểu đồ trực quan hóa phục vụ phân tích:
+
+- **chi_tieu_theo_gioi_tinh.png**: So sánh chi tiêu giữa các giới tính  
+- **chi_tieu_theo_tuoi.png**: Phân tích chi tiêu theo độ tuổi  
+- **chi_tieu_theo_mua.png**: Xu hướng chi tiêu theo mùa  
+- **chi_tieu_theo_danh_muc.png**: Chi tiêu theo danh mục sản phẩm  
+- **doanh_thu_theo_danh_muc.png**: Doanh thu theo từng danh mục  
+- **doanh_thu_theo_mua.png**: Biến động doanh thu theo mùa  
+- **danh_muc_san_pham.png**: Phân bố sản phẩm  
+- **danh_gia_theo_hoi_vien.png**: Đánh giá theo loại khách hàng (membership)  
+- **phuong_thuc_thanh_toan.png**: Phân tích phương thức thanh toán  
+- **so_tien_mua_hang.png**: Phân phối số tiền chi tiêu  
+- **thanh_toan_theo_do_tuoi.png**: Mối quan hệ giữa độ tuổi và thanh toán  
+- **boxplot_chi_tieu_gioi_tinh.png**: Boxplot chi tiêu theo giới tính  
+- **cac_yeu_to_anh_huong.png**: Các yếu tố ảnh hưởng đến doanh thu  
+- **chi_tieu_subscription.png**: Chi tiêu theo đăng ký dịch vụ  
+
+---
+
+### File mã nguồn
+
+- **DATACLEANING.py**: Thực hiện làm sạch dữ liệu (xử lý missing values, loại bỏ dữ liệu trùng lặp)  
+- **EDA.py**: Phân tích khám phá dữ liệu (Exploratory Data Analysis)  
+- **VISUALIZATION.py**: Thực hiện trực quan hóa dữ liệu thông qua các biểu đồ (bar chart, scatter plot, boxplot, ...) nhằm hỗ trợ phân tích và hiểu rõ các mối quan hệ trong dữ liệu  
+- **modeling.py**: Xây dựng và huấn luyện mô hình dự báo  
+- **Insight.py**: Tổng hợp insight và rút ra kết luận từ dữ liệu
+  
+
+---
+
+### File tài liệu
+
+- **README.md**: Tài liệu mô tả project, mục tiêu và cách thực hiện  
+- **Bảng phân công công việc.docx**: Tài liệu phân chia công việc trong nhóm  
+
+---
 
 ---
 
