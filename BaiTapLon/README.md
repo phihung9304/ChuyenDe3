@@ -267,16 +267,12 @@ pip install pandas numpy matplotlib seaborn scikit-learn
 ### ▶️ Chạy chương trình
 
 ```bash
-python sales_analysis.py
+python DATACLEANING.py
+python EDA.py
+python VISUALIZATION.py
+python modeling.py
+python Insight.py
 ```
-
-### 🔄 Chạy riêng bước làm sạch
-
-```python
-df.isnull().sum()
-df.drop_duplicates()
-```
-
 ---
 
 ## 📌 12. Kết luận
