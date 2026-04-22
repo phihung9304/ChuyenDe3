@@ -1,6 +1,6 @@
-# 📊 Customer Sales Analysis & Forecasting
+# Customer Sales Analysis & Forecasting
 
-## 📌 1. Giới thiệu
+## 1. Giới thiệu
 
 Dự án tập trung vào việc phân tích dữ liệu khách hàng và dự báo doanh thu theo tháng cho một cửa hàng bán lẻ.
 Bài toán thuộc lĩnh vực **Time Series Analysis**, với dữ liệu được thu thập theo từng tháng trong vòng 3 năm.
@@ -14,7 +14,7 @@ Mục tiêu là:
 
 ---
 
-## 🎯 2. Mục tiêu bài toán
+## 2. Mục tiêu bài toán
 
 Bài toán được triển khai theo quy trình:
 
@@ -49,7 +49,7 @@ Bài toán được triển khai theo quy trình:
   - Đề xuất chiến lược kinh doanh phù hợp
 
 ---
-## 📂 3. Dataset sử dụng
+## 3. Dataset sử dụng
 
 Dataset gồm các cột:
 
@@ -77,68 +77,80 @@ Dataset gồm các cột:
 
 ---
 
-## 📊 4. Phân tích dữ liệu
+## 4. Phân tích mối quan hệ giữa các yếu tố và doanh thu
 
-### 📌 Tương quan
+Project thực hiện các phân tích chính nhằm khám phá mối quan hệ giữa hành vi khách hàng và doanh thu:
 
-```python
-df[['sales','promotion_budget','num_customers']].corr()
-```
+- Phân tích mối quan hệ giữa **doanh thu và số lượng khách hàng**
+- Phân tích ảnh hưởng của **khuyến mãi (promotion) đến doanh thu**
+- Thống kê doanh thu theo:
+  - Danh mục sản phẩm
+  - Giới tính
+  - Độ tuổi
+  - Mùa mua sắm
 
-### 💡 Insight
+Kết quả nổi bật:
 
-* Marketing ↑ → Sales ↑ (tương quan dương)
-* Customers ↑ → Sales ↑ mạnh hơn
-
----
-
-## 📈 5. Trực quan hóa
-
-Các biểu đồ sử dụng:
-
-* 📉 Line chart: Doanh thu theo thời gian
-* 📊 Rolling mean: Xu hướng mượt
-* 📊 Bar chart: Mùa vụ theo tháng
-* 🔵 Scatter plot:
-
-  * Promotion vs Sales
-  * Customers vs Sales
+- Doanh thu có xu hướng tăng khi số lượng khách hàng tăng  
+- Các chương trình khuyến mãi giúp cải thiện doanh thu đáng kể  
+- Một số nhóm khách hàng và danh mục sản phẩm đóng góp phần lớn doanh thu  
 
 ---
 
-## 🤖 6. Xây dựng mô hình
+## 5. Trực quan hóa
 
-### 🔧 Các mô hình sử dụng
+Các biểu đồ được lưu trong thư mục `outputpng/`:
 
-* Linear Regression
-* Random Forest
-* Naive Forecast
-* Moving Average
-* Exponential Smoothing
-
-### 📌 Feature sử dụng
-
-* `month`, `quarter`
-* `lag_1`, `lag_3`
-* `rolling_mean_3`
+- **chi_tieu_theo_gioi_tinh.png**: So sánh chi tiêu giữa các nhóm giới tính  
+- **chi_tieu_theo_tuoi.png**: Phân tích chi tiêu theo độ tuổi  
+- **chi_tieu_theo_mua.png**: Xu hướng chi tiêu theo mùa  
+- **chi_tieu_theo_danh_muc.png**: Phân tích chi tiêu theo danh mục sản phẩm  
+- **doanh_thu_theo_danh_muc.png**: Doanh thu theo từng danh mục  
+- **doanh_thu_theo_mua.png**: Biến động doanh thu theo mùa  
+- **phuong_thuc_thanh_toan.png**: Phân tích phương thức thanh toán  
+- **boxplot_chi_tieu_gioi_tinh.png**: Phân phối chi tiêu theo giới tính  
+- **cac_yeu_to_anh_huong.png**: Tổng hợp các yếu tố ảnh hưởng đến doanh thu  
 
 ---
 
-## 📏 7. Đánh giá mô hình
+## 6. Xây dựng mô hình
 
-Các chỉ số:
+Project sử dụng mô hình hồi quy để dự đoán doanh thu.
 
-```
-MAE
-RMSE
-MAPE
-```
+Pipeline thực hiện:
 
-👉 Chọn mô hình tốt nhất dựa trên **RMSE thấp nhất**
+- Làm sạch và chuẩn hóa dữ liệu  
+- Chia dữ liệu train/test  
+- Xây dựng mô hình hồi quy  
+- Huấn luyện mô hình trên tập dữ liệu đã xử lý  
 
 ---
 
-## 📁 9. Cấu trúc project
+## 7. Đánh giá mô hình
+
+Hiệu năng mô hình được đánh giá bằng các chỉ số:
+
+- **MAE (Mean Absolute Error)**  
+- **RMSE (Root Mean Squared Error)**  
+- **MAPE (Mean Absolute Percentage Error)**  
+
+Ý nghĩa:
+
+- **MAE**: Sai lệch trung bình giữa giá trị dự đoán và thực tế  
+- **RMSE**: Nhạy hơn với các sai số lớn  
+- **MAPE**: Thể hiện sai số dưới dạng phần trăm  
+
+---
+
+## 8. Insight
+
+- Hành vi khách hàng có ảnh hưởng trực tiếp đến doanh thu  
+- Các yếu tố như độ tuổi, giới tính và danh mục sản phẩm tạo ra sự khác biệt rõ rệt trong chi tiêu  
+- Khuyến mãi là yếu tố quan trọng giúp tăng doanh thu trong ngắn hạn  
+
+---
+
+## 9. Cấu trúc project
 
 ```
 BAITAPLON/
@@ -181,7 +193,7 @@ BAITAPLON/
 
 ---
 
-## 📁 10. Giải thích chi tiết các file trong project
+## 10. Giải thích chi tiết các file trong project
 
 ### File dữ liệu
 - **shopping_trends.csv**: Bộ dữ liệu gốc ban đầu, chứa thông tin về khách hàng, hành vi mua sắm và doanh thu.
@@ -243,9 +255,6 @@ Chứa các biểu đồ trực quan hóa phục vụ phân tích:
 ---
 
 ---
-
-
-
 
 ## ⚙️ 11. Cách chạy chương trình
 
