@@ -256,15 +256,15 @@ Chứa các biểu đồ trực quan hóa phục vụ phân tích:
 
 ---
 
-## ⚙️ 11. Cách chạy chương trình
+## 11. Cách chạy chương trình
 
-### 📦 Cài đặt thư viện
+### Cài đặt thư viện
 
 ```bash
 pip install pandas numpy matplotlib seaborn scikit-learn
 ```
 
-### ▶️ Chạy chương trình
+### Chạy chương trình
 
 ```bash
 python DATACLEANING.py
@@ -275,7 +275,7 @@ python Insight.py
 ```
 ---
 
-## 📌 12. Kết luận
+## 12. Kết luận
 
 * Doanh thu có xu hướng tăng theo thời gian
 * Có yếu tố mùa vụ (cuối năm cao)
@@ -283,7 +283,7 @@ python Insight.py
 * Số lượng khách hàng là yếu tố quan trọng nhất
 * Random Forest cho kết quả tốt nhất
 
-### 💡 Đề xuất
+### Đề xuất
 
 * Tăng marketing vào mùa thấp điểm
 * Tập trung phát triển khách hàng
@@ -291,7 +291,7 @@ python Insight.py
 
 ---
 
-## 👥 13. Thành viên nhóm
+## 13. Thành viên nhóm
 
 * Nguyễn Sỹ Quang - 20220744
 * Lê Phi Hùng - 20220838
