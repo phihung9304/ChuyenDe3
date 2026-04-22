@@ -77,29 +77,7 @@ Dataset gồm các cột:
 
 ---
 
-## 🧹 4. Tiền xử lý dữ liệu
-
-### 🔍 Kiểm tra dữ liệu thiếu
-
-```python
-df.isnull().sum()
-```
-
-### 🛠 Xử lý
-
-* `sales` → điền bằng **mean**
-* `promotion_budget` → **forward fill**
-* `num_customers` → **forward fill**
-
-### 🧾 Xóa dữ liệu trùng
-
-```python
-df.drop_duplicates()
-```
-
----
-
-## 📊 5. Phân tích dữ liệu
+## 📊 4. Phân tích dữ liệu
 
 ### 📌 Tương quan
 
@@ -114,7 +92,7 @@ df[['sales','promotion_budget','num_customers']].corr()
 
 ---
 
-## 📈 6. Trực quan hóa
+## 📈 5. Trực quan hóa
 
 Các biểu đồ sử dụng:
 
@@ -128,7 +106,7 @@ Các biểu đồ sử dụng:
 
 ---
 
-## 🤖 7. Xây dựng mô hình
+## 🤖 6. Xây dựng mô hình
 
 ### 🔧 Các mô hình sử dụng
 
@@ -146,7 +124,7 @@ Các biểu đồ sử dụng:
 
 ---
 
-## 📏 8. Đánh giá mô hình
+## 📏 7. Đánh giá mô hình
 
 Các chỉ số:
 
@@ -201,7 +179,30 @@ BAITAPLON/
 
 ---
 
-## ⚙️ 10. Cách chạy chương trình
+---
+
+## 📁 10. Giải thích chi tiết các file trong project
+
+### 📊 File dữ liệu
+- **shopping_trends.csv**: Bộ dữ liệu gốc ban đầu, chứa thông tin về khách hàng, doanh số và các yếu tố liên quan như khuyến mãi.
+- **shopping_cleaned.csv**: Dữ liệu sau khi đã được làm sạch và tiền xử lý (xử lý missing values, loại bỏ dữ liệu trùng lặp), được sử dụng cho phân tích và xây dựng mô hình.
+
+---
+
+### 📓 File phân tích
+- **analysis.ipynb**: Notebook chính thực hiện toàn bộ quy trình phân tích dữ liệu, bao gồm Data Cleaning, EDA, Visualization và Modeling.
+
+---
+
+### 📌 File tài liệu
+- **README.md**: Tài liệu mô tả tổng quan về project, mục tiêu, quy trình thực hiện và cách sử dụng.
+
+---
+
+
+
+
+## ⚙️ 11. Cách chạy chương trình
 
 ### 📦 Cài đặt thư viện
 
@@ -224,7 +225,7 @@ df.drop_duplicates()
 
 ---
 
-## 📌 11. Kết luận
+## 📌 12. Kết luận
 
 * Doanh thu có xu hướng tăng theo thời gian
 * Có yếu tố mùa vụ (cuối năm cao)
@@ -240,7 +241,7 @@ df.drop_duplicates()
 
 ---
 
-## 👥 12. Thành viên nhóm
+## 👥 13. Thành viên nhóm
 
 * Nguyễn Sỹ Quang - 20220744
 * Lê Phi Hùng - 20220838
