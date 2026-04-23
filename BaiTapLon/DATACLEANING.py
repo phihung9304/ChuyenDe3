@@ -1,4 +1,4 @@
-import pandas as pd   # Thư viện xử lý dữ liệu dạng bảng
+import pandas as pd   # Thư viện xử lý data dạng bảng
 
 # ======================
 # 1. LOAD DATA
