@@ -4,6 +4,7 @@
 
 Dự án tập trung vào việc phân tích dữ liệu khách hàng và dự báo doanh thu theo tháng cho một cửa hàng bán lẻ.
 Bài toán thuộc lĩnh vực **Time Series Analysis**, với dữ liệu được thu thập theo từng tháng trong vòng 3 năm.
+
 Mục tiêu là:
 * Khai thác insight từ dữ liệu lịch sử
 * Xác định xu hướng và mùa vụ
